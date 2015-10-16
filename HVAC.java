@@ -155,56 +155,17 @@ public class HVAC {
         switch (choice) {
 
             case 1: {
-
-                System.out.println("Enter address of furnace");
-                String address = getStringInput();
-
-                System.out.println("Enter description of problem");
-                String problem = getStringInput();
-
-                int type = 0;
-                while (type < 1 || type > 3) {
-                    System.out.println("Type of furnace?\n" +
-                            Furnace.FurnaceTypeManager.furnaceTypeUserChoices());
-                            //We can only choose from types defined in FurnaceTypeManager
-                    type = getPositiveIntInput();
-                }
-
-                Furnace f = new Furnace(address, problem, new Date(), type);
-
-                todayServiceCalls.add(f);
-                System.out.println("Added the following furnace to list of calls:\n" + f);
+                getUserInput("furnace");
                 break;
-
             }
             case 2: {
-
-                System.out.println("Enter address of AC Unit");
-                String address = getStringInput();
-                System.out.println("Enter description of problem");
-                String problem = getStringInput();
-                System.out.println("Enter model of AC unit");
-                String model = getStringInput();
-
-                CentralAC ac = new CentralAC(address, problem, new Date(), model);
-                todayServiceCalls.add(ac);
-                System.out.println("Added the following AC unit to list of calls:\n" + ac);
+                getUserInput("AC Unit");
                 break;
 
             }
             case 3:{
                 // collect our necessary data
-                System.out.println("Enter address of water heater");
-                String address = getStringInput();
-                System.out.println("Enter description of problem");
-                String problem = getStringInput();
-                System.out.println("Enter age of water heater");
-                Double age = getPositiveDoubleInput();
-
-                // and create our WaterHeater object
-                WaterHeater wh = new WaterHeater(address,problem,new Date(),age);
-                todayServiceCalls.add(wh);
-                System.out.println("Added the following water heater to list of calls:\n" + wh);
+                getUserInput("water heater");
                 break;
             }
             case 4: {
@@ -219,6 +180,38 @@ public class HVAC {
 
     }
 
+    private static void getUserInput(String device_type) {
+        // this unifies multiple lines of code that gather the same kind of info
+        // into a separate method.
+        System.out.println("Enter address of " + device_type);
+        String address = getStringInput();
+        System.out.println("Enter description of problem");
+        String problem = getStringInput();
+        ServiceCall dev;
+
+        if (device_type.equals("water heater")) {
+            System.out.println("Enter age of water heater");
+            Double age = getPositiveDoubleInput();
+            dev = new WaterHeater(address,problem,new Date(),age);
+        } else if (device_type.equals("AC Unit")){
+            System.out.println("Enter model of AC unit");
+            String model = getStringInput();
+            dev = new CentralAC(address, problem, new Date(), model);
+        } else { // device is a furnace
+            int type = 0;
+            while (type < 1 || type > 3) {
+                System.out.println("Type of furnace?\n" +
+                        Furnace.FurnaceTypeManager.furnaceTypeUserChoices());
+                //We can only choose from types defined in FurnaceTypeManager
+                type = getPositiveIntInput();
+            }
+
+            dev = new Furnace(address, problem, new Date(), type);
+        }  // end if-else block
+
+        todayServiceCalls.add(dev);
+        System.out.println("Added the following " + device_type + " to list of calls:\n" + dev);
+    }
 
     //Validation methods
 

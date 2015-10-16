@@ -10,8 +10,6 @@ public class Furnace extends ServiceCall {
 
     private int furnaceType;
 
-    private static FurnaceTypeManager furnaceTypeManager;
-
     public Furnace(String serviceAddress, String problemDescription, Date date, int furnaceType) {
 
         super(serviceAddress, problemDescription, date);
@@ -23,7 +21,7 @@ public class Furnace extends ServiceCall {
     @Override
     public String toString() {
 
-        String typeString = furnaceTypeManager.getTypeString(furnaceType);
+        String typeString = FurnaceTypeManager.getTypeString(furnaceType);
         String resolvedDateString = ( resolvedDate == null) ? "Unresolved" : this.resolvedDate.toString();
         String resolutionString = ( this.resolution == null) ? "Unresolved" : this.resolution;
         String feeString = (fee == UNRESOLVED) ? "Unresolved" : "$" + Double.toString(fee);
