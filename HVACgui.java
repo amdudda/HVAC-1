@@ -29,6 +29,7 @@ public class HVACgui extends JFrame {
     private JTextArea resolutionTextArea;
     private JTextField FeeTextField;
     private JButton showResolvedCallsButton;
+    private JButton showAllCallsButton;
     private boolean showRCB = true;
     private ButtonGroup serviceCallTypeButtonGroup = new ButtonGroup();
 
@@ -172,9 +173,13 @@ public class HVACgui extends JFrame {
                 }
             }
         });
+        showAllCallsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateServiceCallList("all");
+            }
+        });
     }
-
-
 
     private void updateServiceCallList(String ticketType) {
         //and refresh the list of tickets
@@ -182,8 +187,12 @@ public class HVACgui extends JFrame {
         LinkedList<ServiceCall> listToUse;
         if (ticketType.equals("resolved")) {
             listToUse = HVAC.resolvedServiceCalls;
-        } else {
+        } else if (ticketType.equals("open")) {
             listToUse = HVAC.todayServiceCalls;
+        } else {  // presumably "all"
+            listToUse = new LinkedList<>();
+            listToUse.addAll(HVAC.todayServiceCalls);
+            listToUse.addAll(HVAC.resolvedServiceCalls);
         }
         for (ServiceCall sc : listToUse) {
             HVACgui.this.serviceCallListModel.addElement(sc);

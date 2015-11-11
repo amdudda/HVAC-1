@@ -2,32 +2,14 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="HVACgui">
   <grid id="27dc6" binding="rootPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="742" height="438"/>
+      <xy x="20" y="-3" width="812" height="584"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <component id="aafbe" class="javax.swing.JButton" binding="addServiceCallButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Add Service Call"/>
-        </properties>
-      </component>
-      <component id="4669b" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Service Address:"/>
-        </properties>
-      </component>
       <component id="d565d" class="javax.swing.JTextArea" binding="serviceAddressTextArea">
         <constraints>
-          <grid row="3" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="3" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -35,20 +17,11 @@
         <properties>
           <minimumSize width="200" height="45"/>
           <preferredSize width="200" height="45"/>
-        </properties>
-      </component>
-      <component id="9878d" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Problem Description"/>
         </properties>
       </component>
       <component id="2b21e" class="javax.swing.JTextArea" binding="problemDescriptionTextArea">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="5" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -58,28 +31,9 @@
           <preferredSize width="200" height="45"/>
         </properties>
       </component>
-      <component id="10fb2" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <font size="18" style="1"/>
-          <text value="Service Call System"/>
-        </properties>
-      </component>
-      <component id="1eadd" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Service Type:"/>
-        </properties>
-      </component>
       <component id="a2d3c" class="javax.swing.JRadioButton" binding="centralACRadioButton" default-binding="true">
         <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -89,7 +43,7 @@
       </component>
       <component id="11a6e" class="javax.swing.JRadioButton" binding="furnaceRadioButton" default-binding="true">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -99,7 +53,7 @@
       </component>
       <component id="980b0" class="javax.swing.JRadioButton" binding="waterHeaterRadioButton" default-binding="true">
         <constraints>
-          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -107,36 +61,18 @@
           <text value="Water Heater"/>
         </properties>
       </component>
-      <component id="fe7b4" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Central AC Model:"/>
-        </properties>
-      </component>
       <component id="1bbb2" class="javax.swing.JTextField" binding="acModelTextField">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties/>
       </component>
-      <component id="30cfc" class="javax.swing.JButton" binding="quitButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Quit"/>
-        </properties>
-      </component>
       <component id="3175" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -145,35 +81,14 @@
       </component>
       <component id="ef24b" class="javax.swing.JComboBox" binding="furnaceTypeComboBox">
         <constraints>
-          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties/>
       </component>
-      <hspacer id="a28e3">
-        <constraints>
-          <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </hspacer>
-      <vspacer id="4fd0a">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </vspacer>
-      <component id="c4ebd" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Water Heater Age:"/>
-        </properties>
-      </component>
       <component id="7fa90" class="javax.swing.JTextField" binding="waterHeaterAgeTextField">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -182,7 +97,7 @@
       </component>
       <component id="924f4" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -191,7 +106,7 @@
       </component>
       <scrollpane id="dfd17" binding="serviceCallListScrollPane">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="0" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -205,27 +120,9 @@
           </component>
         </children>
       </scrollpane>
-      <component id="b86fe" class="javax.swing.JButton" binding="resolveSelectedCallButton" default-binding="true">
-        <constraints>
-          <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Resolve Selected Call"/>
-        </properties>
-      </component>
-      <component id="a8f1f" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="9" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Problem Resolution:"/>
-        </properties>
-      </component>
       <component id="6cb3e" class="javax.swing.JTextArea" binding="resolutionTextArea">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="50"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -235,18 +132,9 @@
           <preferredSize width="200" height="45"/>
         </properties>
       </component>
-      <component id="fcac7" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Service Fee:"/>
-        </properties>
-      </component>
       <component id="b0417" class="javax.swing.JTextField" binding="FeeTextField">
         <constraints>
-          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -255,7 +143,7 @@
       </component>
       <component id="c9d22" class="javax.swing.JLabel">
         <constraints>
-          <grid row="10" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -264,20 +152,147 @@
       </component>
       <component id="ce36" class="javax.swing.JLabel">
         <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="$"/>
         </properties>
       </component>
+      <vspacer id="32979">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="7e66c">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="cd769">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <component id="aafbe" class="javax.swing.JButton" binding="addServiceCallButton" default-binding="true">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Add Service Call"/>
+        </properties>
+      </component>
+      <component id="30cfc" class="javax.swing.JButton" binding="quitButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Quit"/>
+        </properties>
+      </component>
+      <component id="b86fe" class="javax.swing.JButton" binding="resolveSelectedCallButton" default-binding="true">
+        <constraints>
+          <grid row="14" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Resolve Selected Call"/>
+        </properties>
+      </component>
+      <component id="1eadd" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Service Type:"/>
+        </properties>
+      </component>
+      <component id="4669b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Service Address:"/>
+        </properties>
+      </component>
+      <component id="9878d" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Problem Description"/>
+        </properties>
+      </component>
+      <component id="fe7b4" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Central AC Model:"/>
+        </properties>
+      </component>
+      <component id="c4ebd" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Water Heater Age:"/>
+        </properties>
+      </component>
+      <component id="a8f1f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Problem Resolution:"/>
+        </properties>
+      </component>
+      <component id="fcac7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Service Fee:"/>
+        </properties>
+      </component>
       <component id="e6471" class="javax.swing.JButton" binding="showResolvedCallsButton" default-binding="true">
         <constraints>
-          <grid row="8" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="Show Resolved Calls"/>
+        </properties>
+      </component>
+      <component id="10fb2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font size="18" style="1"/>
+          <text value="Service Call System"/>
+        </properties>
+      </component>
+      <component id="d96e6" class="javax.swing.JButton" binding="showAllCallsButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Show All Calls"/>
         </properties>
       </component>
     </children>
