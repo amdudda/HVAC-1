@@ -18,6 +18,8 @@ public class HVAC {
 
     public static void main(String[] args) {
 
+        HVACgui hvaCgui = new HVACgui();
+
         //Use todayServiceCalls as a Queue
         //So, add new calls to the end with add()
         //Remove a resolved call from the front of the queue with remove()
