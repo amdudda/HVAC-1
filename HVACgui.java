@@ -91,12 +91,8 @@ public class HVACgui extends JFrame {
                     }
                 }
                 HVAC.todayServiceCalls.add(callToAdd);
-                //and refresh the list of tickets
-                HVACgui.this.serviceCallListModel.clear();
-                for (ServiceCall sc : HVAC.todayServiceCalls) {
-                    HVACgui.this.serviceCallListModel.addElement(sc);
-                }
 
+                updateServiceCallList();
             }
         });
 
@@ -135,5 +131,36 @@ public class HVACgui extends JFrame {
                 }
             }
         );
+
+        // resolve our tickets
+        resolveSelectedCallButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // need to do a few things here: mark the ticket as resolved, store the resolution and fee, and refresh
+                // the list of tickets.
+                ServiceCall selectedCall = HVACgui.this.ServiceCallList.getSelectedValue();
+                selectedCall.setReportedDate(new Date());
+                selectedCall.setResolution(HVACgui.this.resolutionTextArea.getText());
+                String feeString = HVACgui.this.FeeTextField.getText();
+                try {  // error trapping for bad data entry
+                    double fee = Double.parseDouble(feeString);
+                    selectedCall.setFee(fee);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(HVACgui.this, "Enter a number for the service fee.  Do not include the dollar sign.");
+                    return;
+                }
+                HVAC.todayServiceCalls.remove(selectedCall);
+                HVAC.resolvedServiceCalls.add(selectedCall);
+                updateServiceCallList();
+            }
+        });
+    }
+
+    private void updateServiceCallList() {
+        //and refresh the list of tickets
+        HVACgui.this.serviceCallListModel.clear();
+        for (ServiceCall sc : HVAC.todayServiceCalls) {
+            HVACgui.this.serviceCallListModel.addElement(sc);
+        }
     }
 }
