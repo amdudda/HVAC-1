@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -17,8 +18,11 @@ public class HVACgui extends JFrame {
     private JRadioButton furnaceRadioButton;
     private JRadioButton waterHeaterRadioButton;
     private JTextField acModelTextField;
-    private JLabel Header;
-    private ButtonGroup serviceCallTypeButtonGroup;
+    private JButton quitButton;
+    private String[] furnaceTypeOptions = {"Forced Air","Boiler", "Octopus"};
+    private JComboBox<String> furnaceTypeComboBox;
+    //private JLabel Header;
+    private ButtonGroup serviceCallTypeButtonGroup = new ButtonGroup();
 
     private DefaultListModel<ServiceCall> serviceCallListModel;
 
@@ -28,6 +32,7 @@ public class HVACgui extends JFrame {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        setSize(new Dimension(700,300));
 
         // define our list model for service calls
         serviceCallListModel = new DefaultListModel<ServiceCall>();
@@ -41,6 +46,10 @@ public class HVACgui extends JFrame {
         //initial debugging: set AC as selected option
         serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(),true);
 
+        // define the values available in the furnace type combobox
+        for (int i=0; i<furnaceTypeOptions.length; i++){
+            furnaceTypeComboBox.addItem(furnaceTypeOptions[i]);
+        }
 
         addServiceCallButton.addActionListener(new ActionListener() {
             @Override
@@ -50,17 +59,29 @@ public class HVACgui extends JFrame {
                 String svc_addr = HVACgui.this.serviceAddressTextArea.getText();
                 String prob_desc = HVACgui.this.problemDescriptionTextArea.getText();
                 Date rept_date = new Date();
-                if (serviceCallTypeButtonGroup.getSelection().getActionCommand().equals("ac")) {
+                // the above attributes are common to all service types; there are a few that are specific to certain call types
+                String calltype = serviceCallTypeButtonGroup.getSelection().getActionCommand();
+                if (calltype.equals("ac")) {
                     String model = HVACgui.this.acModelTextField.getText();
                     callToAdd = new CentralAC(svc_addr,prob_desc,rept_date,model);
-                    HVAC.todayServiceCalls.add(callToAdd);
+                } else { // (calltype.equals("f")) {
+                    int furnType = furnaceTypeComboBox.getSelectedIndex() + 1;
+                    callToAdd = new Furnace(svc_addr,prob_desc,rept_date,furnType);
                 }
+                HVAC.todayServiceCalls.add(callToAdd);
                 //and refresh the list of tickets
                 HVACgui.this.serviceCallListModel.clear();
                 for (ServiceCall sc : HVAC.todayServiceCalls) {
                     HVACgui.this.serviceCallListModel.addElement(sc);
                 }
 
+            }
+        });
+
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
     }
