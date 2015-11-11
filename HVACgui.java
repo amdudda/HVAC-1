@@ -1,9 +1,8 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.Date;
 
 /**
@@ -25,6 +24,9 @@ public class HVACgui extends JFrame {
     private JComboBox<String> furnaceTypeComboBox;
     private JTextField waterHeaterAgeTextField;
     private JScrollPane serviceCallListScrollPane;
+    private JButton resolveSelectedCallButton;
+    private JTextArea resolutionTextArea;
+    private JTextField FeeTextField;
     //private JLabel Header;
     private ButtonGroup serviceCallTypeButtonGroup = new ButtonGroup();
 
@@ -49,9 +51,12 @@ public class HVACgui extends JFrame {
         serviceCallTypeButtonGroup.add(waterHeaterRadioButton);
         // set AC as selected option
         serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(), true);
-        // and turn off the options that don't apply to AC units
+        // turn off the options that don't apply to AC units
         HVACgui.this.furnaceTypeComboBox.setEnabled(false);
         HVACgui.this.waterHeaterAgeTextField.setEnabled(false);
+        // disable ability to enter a resolution
+        HVACgui.this.resolutionTextArea.setEnabled(false);
+        HVACgui.this.FeeTextField.setEnabled(false);
 
         // define the values available in the furnace type combobox
         for (int i = 0; i < furnaceTypeOptions.length; i++) {
@@ -121,5 +126,14 @@ public class HVACgui extends JFrame {
                 HVACgui.this.waterHeaterAgeTextField.setEnabled(HVACgui.this.waterHeaterRadioButton.isSelected());
             }
         });
+        // listener to enable/disable resolution entry
+        ServiceCallList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                HVACgui.this.resolutionTextArea.setEnabled(true);
+                HVACgui.this.FeeTextField.setEnabled(true);
+                }
+            }
+        );
     }
 }
