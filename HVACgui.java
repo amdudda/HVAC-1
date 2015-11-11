@@ -58,8 +58,7 @@ public class HVACgui extends JFrame {
         HVACgui.this.furnaceTypeComboBox.setEnabled(false);
         HVACgui.this.waterHeaterAgeTextField.setEnabled(false);
         // disable ability to enter a resolution
-        HVACgui.this.resolutionTextArea.setEnabled(false);
-        HVACgui.this.FeeTextField.setEnabled(false);
+        disableResolutionFields();
 
         // define the values available in the furnace type combobox
         for (int i = 0; i < furnaceTypeOptions.length; i++) {
@@ -154,6 +153,7 @@ public class HVACgui extends JFrame {
                 }
                 HVAC.todayServiceCalls.remove(selectedCall);
                 HVAC.resolvedServiceCalls.add(selectedCall);
+                clearResolutionData();
                 updateServiceCallList("open");
             }
         });
@@ -164,8 +164,7 @@ public class HVACgui extends JFrame {
                     showRCB = false;
                     HVACgui.this.showResolvedCallsButton.setText("Show Open Service Calls");
                     updateServiceCallList("resolved");
-                    HVACgui.this.resolutionTextArea.setEnabled(false);
-                    HVACgui.this.FeeTextField.setEnabled(false);
+                    disableResolutionFields();
                 } else {
                     showRCB = true;
                     HVACgui.this.showResolvedCallsButton.setText("Show Resolved Calls");
@@ -177,6 +176,8 @@ public class HVACgui extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateServiceCallList("all");
+                clearResolutionData();
+                disableResolutionFields();
             }
         });
     }
@@ -197,5 +198,15 @@ public class HVACgui extends JFrame {
         for (ServiceCall sc : listToUse) {
             HVACgui.this.serviceCallListModel.addElement(sc);
         }
+    }
+
+    private void clearResolutionData() {
+        HVACgui.this.resolutionTextArea.setText("");
+        HVACgui.this.FeeTextField.setText("");
+    }
+
+    private void disableResolutionFields() {
+        HVACgui.this.resolutionTextArea.setEnabled(false);
+        HVACgui.this.FeeTextField.setEnabled(false);
     }
 }
