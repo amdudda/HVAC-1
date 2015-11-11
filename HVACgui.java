@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Date;
 
 /**
@@ -43,8 +45,11 @@ public class HVACgui extends JFrame {
         serviceCallTypeButtonGroup.add(centralACRadioButton);
         serviceCallTypeButtonGroup.add(furnaceRadioButton);
         serviceCallTypeButtonGroup.add(waterHeaterRadioButton);
-        //initial debugging: set AC as selected option
+        // set AC as selected option
         serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(),true);
+        // and turn off the options that don't apply to AC units
+        HVACgui.this.furnaceTypeComboBox.setEnabled(false);
+
 
         // define the values available in the furnace type combobox
         for (int i=0; i<furnaceTypeOptions.length; i++){
@@ -82,6 +87,26 @@ public class HVACgui extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+
+        // button item listeners to enable/disable items in window
+        centralACRadioButton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                HVACgui.this.acModelTextField.setEnabled(HVACgui.this.centralACRadioButton.isSelected());
+            }
+        });
+        furnaceRadioButton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                HVACgui.this.furnaceTypeComboBox.setEnabled(HVACgui.this.furnaceRadioButton.isSelected());
+            }
+        });
+        waterHeaterRadioButton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // TODO turn off related water heater options
             }
         });
     }
