@@ -21,7 +21,7 @@ public class HVACgui extends JFrame {
     private JRadioButton waterHeaterRadioButton;
     private JTextField acModelTextField;
     private JButton quitButton;
-    private String[] furnaceTypeOptions = {"Forced Air","Boiler", "Octopus"};
+    private String[] furnaceTypeOptions = {"Forced Air", "Boiler", "Octopus"};
     private JComboBox<String> furnaceTypeComboBox;
     private JTextField waterHeaterAgeTextField;
     private JScrollPane serviceCallListScrollPane;
@@ -36,7 +36,7 @@ public class HVACgui extends JFrame {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        setSize(new Dimension(700,700));
+        setSize(new Dimension(700, 700));
 
         // define our list model for service calls
         serviceCallListModel = new DefaultListModel<ServiceCall>();
@@ -48,13 +48,13 @@ public class HVACgui extends JFrame {
         serviceCallTypeButtonGroup.add(furnaceRadioButton);
         serviceCallTypeButtonGroup.add(waterHeaterRadioButton);
         // set AC as selected option
-        serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(),true);
+        serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(), true);
         // and turn off the options that don't apply to AC units
         HVACgui.this.furnaceTypeComboBox.setEnabled(false);
         HVACgui.this.waterHeaterAgeTextField.setEnabled(false);
 
         // define the values available in the furnace type combobox
-        for (int i=0; i<furnaceTypeOptions.length; i++){
+        for (int i = 0; i < furnaceTypeOptions.length; i++) {
             furnaceTypeComboBox.addItem(furnaceTypeOptions[i]);
         }
 
@@ -70,15 +70,20 @@ public class HVACgui extends JFrame {
                 String calltype = serviceCallTypeButtonGroup.getSelection().getActionCommand();
                 if (calltype.equals("ac")) {
                     String model = HVACgui.this.acModelTextField.getText();
-                    callToAdd = new CentralAC(svc_addr,prob_desc,rept_date,model);
+                    callToAdd = new CentralAC(svc_addr, prob_desc, rept_date, model);
                 } else if (calltype.equals("f")) {
                     int furnType = furnaceTypeComboBox.getSelectedIndex() + 1;
-                    callToAdd = new Furnace(svc_addr,prob_desc,rept_date,furnType);
+                    callToAdd = new Furnace(svc_addr, prob_desc, rept_date, furnType);
                 } else {
                     // otherwise, we presumably have a water heater
                     String ageString = waterHeaterAgeTextField.getText();
-                    double age = Double.parseDouble(ageString);
-                    callToAdd = new WaterHeater(svc_addr,prob_desc,rept_date,age);
+                    try {  // error trapping for bad data entry
+                        double age = Double.parseDouble(ageString);
+                        callToAdd = new WaterHeater(svc_addr, prob_desc, rept_date, age);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(HVACgui.this, "Enter a number for water heater age.  (Can be decimal.)");
+                        return;
+                    }
                 }
                 HVAC.todayServiceCalls.add(callToAdd);
                 //and refresh the list of tickets
