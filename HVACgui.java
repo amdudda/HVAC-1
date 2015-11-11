@@ -142,7 +142,7 @@ public class HVACgui extends JFrame {
                 // need to do a few things here: mark the ticket as resolved, store the resolution and fee, and refresh
                 // the list of tickets.
                 ServiceCall selectedCall = HVACgui.this.ServiceCallList.getSelectedValue();
-                selectedCall.setReportedDate(new Date());
+                selectedCall.setResolvedDate(new Date());
                 selectedCall.setResolution(HVACgui.this.resolutionTextArea.getText());
                 String feeString = HVACgui.this.FeeTextField.getText();
                 try {  // error trapping for bad data entry
