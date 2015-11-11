@@ -10,8 +10,8 @@ public class HVAC {
     /** Program to manage service calls to furnaces and AC units
      */
 
-    private static LinkedList<ServiceCall> todayServiceCalls;
-    private static LinkedList<ServiceCall> resolvedServiceCalls;
+    public static LinkedList<ServiceCall> todayServiceCalls;
+    public static LinkedList<ServiceCall> resolvedServiceCalls;
 
     private static Scanner scanner;   //Global scanner used for all input
 
