@@ -4,6 +4,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
+import java.util.LinkedList;
 
 /**
  * Created by amdudda on 11/10/15.
@@ -27,7 +28,8 @@ public class HVACgui extends JFrame {
     private JButton resolveSelectedCallButton;
     private JTextArea resolutionTextArea;
     private JTextField FeeTextField;
-    //private JLabel Header;
+    private JButton showResolvedCallsButton;
+    private boolean showRCB = true;
     private ButtonGroup serviceCallTypeButtonGroup = new ButtonGroup();
 
     private DefaultListModel<ServiceCall> serviceCallListModel;
@@ -92,7 +94,7 @@ public class HVACgui extends JFrame {
                 }
                 HVAC.todayServiceCalls.add(callToAdd);
 
-                updateServiceCallList();
+                updateServiceCallList("open");
             }
         });
 
@@ -151,15 +153,39 @@ public class HVACgui extends JFrame {
                 }
                 HVAC.todayServiceCalls.remove(selectedCall);
                 HVAC.resolvedServiceCalls.add(selectedCall);
-                updateServiceCallList();
+                updateServiceCallList("open");
+            }
+        });
+        showResolvedCallsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (showRCB) {
+                    showRCB = false;
+                    HVACgui.this.showResolvedCallsButton.setText("Show Open Service Calls");
+                    updateServiceCallList("resolved");
+                    HVACgui.this.resolutionTextArea.setEnabled(false);
+                    HVACgui.this.FeeTextField.setEnabled(false);
+                } else {
+                    showRCB = true;
+                    HVACgui.this.showResolvedCallsButton.setText("Show Resolved Calls");
+                    updateServiceCallList("open");
+                }
             }
         });
     }
 
-    private void updateServiceCallList() {
+
+
+    private void updateServiceCallList(String ticketType) {
         //and refresh the list of tickets
         HVACgui.this.serviceCallListModel.clear();
-        for (ServiceCall sc : HVAC.todayServiceCalls) {
+        LinkedList<ServiceCall> listToUse;
+        if (ticketType.equals("resolved")) {
+            listToUse = HVAC.resolvedServiceCalls;
+        } else {
+            listToUse = HVAC.todayServiceCalls;
+        }
+        for (ServiceCall sc : listToUse) {
             HVACgui.this.serviceCallListModel.addElement(sc);
         }
     }
