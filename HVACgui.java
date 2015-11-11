@@ -23,6 +23,8 @@ public class HVACgui extends JFrame {
     private JButton quitButton;
     private String[] furnaceTypeOptions = {"Forced Air","Boiler", "Octopus"};
     private JComboBox<String> furnaceTypeComboBox;
+    private JTextField waterHeaterAgeTextField;
+    private JScrollPane serviceCallListScrollPane;
     //private JLabel Header;
     private ButtonGroup serviceCallTypeButtonGroup = new ButtonGroup();
 
@@ -34,7 +36,7 @@ public class HVACgui extends JFrame {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        setSize(new Dimension(700,300));
+        setSize(new Dimension(700,700));
 
         // define our list model for service calls
         serviceCallListModel = new DefaultListModel<ServiceCall>();
@@ -49,7 +51,7 @@ public class HVACgui extends JFrame {
         serviceCallTypeButtonGroup.setSelected(centralACRadioButton.getModel(),true);
         // and turn off the options that don't apply to AC units
         HVACgui.this.furnaceTypeComboBox.setEnabled(false);
-
+        HVACgui.this.waterHeaterAgeTextField.setEnabled(false);
 
         // define the values available in the furnace type combobox
         for (int i=0; i<furnaceTypeOptions.length; i++){
@@ -69,9 +71,14 @@ public class HVACgui extends JFrame {
                 if (calltype.equals("ac")) {
                     String model = HVACgui.this.acModelTextField.getText();
                     callToAdd = new CentralAC(svc_addr,prob_desc,rept_date,model);
-                } else { // (calltype.equals("f")) {
+                } else if (calltype.equals("f")) {
                     int furnType = furnaceTypeComboBox.getSelectedIndex() + 1;
                     callToAdd = new Furnace(svc_addr,prob_desc,rept_date,furnType);
+                } else {
+                    // otherwise, we presumably have a water heater
+                    String ageString = waterHeaterAgeTextField.getText();
+                    double age = Double.parseDouble(ageString);
+                    callToAdd = new WaterHeater(svc_addr,prob_desc,rept_date,age);
                 }
                 HVAC.todayServiceCalls.add(callToAdd);
                 //and refresh the list of tickets
@@ -106,7 +113,7 @@ public class HVACgui extends JFrame {
         waterHeaterRadioButton.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                // TODO turn off related water heater options
+                HVACgui.this.waterHeaterAgeTextField.setEnabled(HVACgui.this.waterHeaterRadioButton.isSelected());
             }
         });
     }
