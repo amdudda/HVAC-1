@@ -33,6 +33,7 @@ public class HVAC {
 
         resolvedServiceCalls = new LinkedList<ServiceCall>();
 
+/*  This code not needed for GUI
         scanner = new Scanner(System.in);
 
         boolean quit = false;
@@ -140,6 +141,7 @@ public class HVAC {
         System.out.println("Thanks, bye!");
         //Tidy up... close the scanner
         scanner.close();
+        */
     }
 
 
